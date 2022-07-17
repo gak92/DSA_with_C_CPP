@@ -26,10 +26,22 @@ void showArray(struct ArrayADT *a)
   }
 }
 
+void setValue(struct ArrayADT *a)
+{
+  int n;
+  for (int i = 0; i < a->used_size; i++)
+  {
+    printf("Enter value %d", i);
+    scanf("%d", &n);
+    (a->ptr)[i] = n;
+  }
+}
+
 int main()
 {
   struct ArrayADT marks;
   createArray(&marks, 10, 4);
+  setValue(&marks);
   showArray(&marks);
 
   return 0;
