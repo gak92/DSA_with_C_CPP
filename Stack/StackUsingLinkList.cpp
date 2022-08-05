@@ -64,6 +64,7 @@ int pop(struct Node *ptr)
   if (isEmpty())
   {
     printf("Stack is underflow");
+    return -1;
   }
   else
   {
