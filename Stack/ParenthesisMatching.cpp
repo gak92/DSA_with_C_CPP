@@ -138,7 +138,7 @@ int ParenthesisMatch(char *exp)
 
 int main()
 {
-  char *exp = "((8+9))";
+  char *exp = (char *)"((8+9))";
 
   if (ParenthesisMatch(exp))
   {
