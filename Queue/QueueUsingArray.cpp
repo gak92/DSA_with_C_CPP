@@ -11,7 +11,7 @@ struct Queue
 
 int isEmpty(struct Queue *q)
 {
-  if (q->rear == -1)
+  if (q->rear == q->front)
   {
     return 1;
   }
