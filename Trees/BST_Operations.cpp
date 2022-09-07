@@ -83,6 +83,29 @@ struct node *iterativeSearch(struct node *root, int key)
   return NULL;
 }
 
+void insert(struct node *root, int key)
+{
+  struct node *prev = NULL;
+  while (root != NULL)
+  {
+    prev = root;
+    if (key == root->data)
+    {
+      printf("Cannot insert duplicate element %d", key);
+      return;
+    }
+    else if (key < root->data)
+      root = root->left;
+    else
+      root = root->right;
+  }
+  struct node *newNode = createNode(key);
+  if (key < prev->data)
+    prev->left = newNode;
+  else
+    prev->right = newNode;
+}
+
 int main()
 {
   struct node *p = createNode(5);
@@ -105,19 +128,28 @@ int main()
   // printf("\nInOrder Traversal: ");
   // inorder(p);
 
+  // IS TREE BST
   // printf("\nIs tree BST: %d", isBST(p));
 
-  struct node *n = recursiveSearch(p, 6);
-  if (n != NULL)
-    printf("\nElement Found: %d", n->data);
-  else
-    printf("\nElement not Found");
+  // SEARCH IN BST
+  // struct node *n = recursiveSearch(p, 6);
+  // if (n != NULL)
+  //   printf("\nElement Found: %d", n->data);
+  // else
+  //   printf("\nElement not Found");
 
-  struct node *m = iterativeSearch(p, 6);
-  if (m != NULL)
-    printf("\nElement Found: %d", m->data);
-  else
-    printf("\nElement not Found");
+  // struct node *m = iterativeSearch(p, 6);
+  // if (m != NULL)
+  //   printf("\nElement Found: %d", m->data);
+  // else
+  //   printf("\nElement not Found");
+
+  // INSERTION IN BST
+  insert(p, 7);
+  printf("\nAfter insert: ");
+  inorder(p);
+
+  // DELETION IN BST
 
   return 0;
 }
