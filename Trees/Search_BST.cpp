@@ -65,6 +65,24 @@ struct node *recursiveSearch(struct node *root, int key)
   }
 }
 
+struct node *iterativeSearch(struct node *root, int key)
+{
+  while (root != NULL)
+  {
+    if (key == root->data)
+      return root;
+    else if (key < root->data)
+    {
+      root = root->left;
+    }
+    else
+    {
+      root = root->right;
+    }
+  }
+  return NULL;
+}
+
 int main()
 {
   struct node *p = createNode(5);
@@ -90,15 +108,16 @@ int main()
   // printf("\nIs tree BST: %d", isBST(p));
 
   struct node *n = recursiveSearch(p, 6);
-
   if (n != NULL)
-  {
-    printf("Element Found: %d", n->data);
-  }
+    printf("\nElement Found: %d", n->data);
   else
-  {
-    printf("Element not Found");
-  }
+    printf("\nElement not Found");
+
+  struct node *m = iterativeSearch(p, 6);
+  if (m != NULL)
+    printf("\nElement Found: %d", m->data);
+  else
+    printf("\nElement not Found");
 
   return 0;
 }
