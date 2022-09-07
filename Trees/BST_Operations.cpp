@@ -106,6 +106,41 @@ void insert(struct node *root, int key)
     prev->right = newNode;
 }
 
+struct node *inOrderPredecessor(struct node *root)
+{
+  root = root->left;
+  while (root->right != NULL)
+  {
+    root = root->right;
+  }
+  return root;
+}
+
+struct node *deleteNode(struct node *root, int value)
+{
+  struct node *iPre;
+  if (root == NULL)
+    return NULL;
+  if (root->left == NULL && root->right == NULL)
+  {
+    free(root);
+    return NULL;
+  }
+
+  // search for the node
+  if (value < root->data)
+    root->left = deleteNode(root->left, value);
+  else if (value > root->data)
+    root->right = deleteNode(root->right, value);
+  else
+  {
+    iPre = inOrderPredecessor(root);
+    root->data = iPre->data;
+    root->left = deleteNode(root->left, iPre->data);
+  }
+  return root;
+}
+
 int main()
 {
   struct node *p = createNode(5);
@@ -145,11 +180,15 @@ int main()
   //   printf("\nElement not Found");
 
   // INSERTION IN BST
-  insert(p, 7);
-  printf("\nAfter insert: ");
-  inorder(p);
+  // insert(p, 7);
+  // printf("\nAfter insert: ");
+  // inorder(p);
 
   // DELETION IN BST
+  inorder(p);
+  printf("\nAfter deletion:");
+  deleteNode(p, 5);
+  inorder(p);
 
   return 0;
 }
