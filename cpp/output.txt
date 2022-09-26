@@ -1,1 +1,13 @@
-7
+61 is a Prime Number
+10 is not Prime
+11 is Prime
+12 is not Prime
+13 is Prime
+14 is not Prime
+15 is not Prime
+16 is not Prime
+17 is Prime
+18 is not Prime
+19 is Prime
+20 is not Prime
+21 is not Prime
