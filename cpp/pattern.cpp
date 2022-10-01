@@ -3,13 +3,13 @@ using namespace std;
 
 int main()
 {
-#ifndef ONLINE_JUDGE
-  freopen("input.txt", "r", stdin);
-  freopen("output.txt", "w", stdout);
-#endif
+  // #ifndef ONLINE_JUDGE
+  //   freopen("input.txt", "r", stdin);
+  //   freopen("output.txt", "w", stdout);
+  // #endif
 
-  int row, col;
-  cin >> row >> col;
+  int row = 4, col = 4;
+  // cin >> row >> col;
 
   // Rectangle Pattern
   for (int i = 0; i < row; i++)
