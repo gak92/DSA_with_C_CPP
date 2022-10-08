@@ -1,0 +1,1 @@
+{"name":"Local: 01_check_binary","url":"d:\\GitHub\\DSA_with_C_CPP\\cpp\\OOP\\01_check_binary.cpp","tests":[{"id":1665260043202,"input":"010101","output":"a binary number"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\GitHub\\DSA_with_C_CPP\\cpp\\OOP\\01_check_binary.cpp","group":"local","local":true}
