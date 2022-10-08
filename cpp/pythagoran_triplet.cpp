@@ -34,7 +34,9 @@ bool is_pythagorian_triplet(int x, int y, int z)
 
 int main()
 {
-  int x = 3, y = 4, z = 5;
+  // int x = 3, y = 4, z = 5;
+  int x, y, z;
+  cin >> x >> y >> z;
 
   if (is_pythagorian_triplet(x, y, z))
   {

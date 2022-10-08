@@ -1,0 +1,1 @@
+{"name":"Local: pythagoran_triplet","url":"d:\\GitHub\\DSA_with_C_CPP\\cpp\\pythagoran_triplet.cpp","tests":[{"id":1664740286391,"input":"3 4 5","output":"Pythagorian triplet"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\GitHub\\DSA_with_C_CPP\\cpp\\pythagoran_triplet.cpp","group":"local","local":true}
