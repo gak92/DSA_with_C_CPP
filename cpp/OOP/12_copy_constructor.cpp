@@ -11,6 +11,7 @@ public:
   {
     num = n;
   }
+
   // copy constructor
   // When no copy constructor found, compiler supplies its own copy constructor
   Number(Number &obj)
@@ -18,6 +19,7 @@ public:
     cout << "Copy constructor called!!!" << endl;
     num = obj.num;
   }
+
   void Display()
   {
     cout << "The num of object is: " << num << endl;
