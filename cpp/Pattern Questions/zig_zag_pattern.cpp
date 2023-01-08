@@ -1,6 +1,11 @@
 #include <iostream>
 using namespace std;
 
+
+//     *       *       *       *       *       *       * 
+//   *   *   *   *   *   *   *   *   *   *   *   *   *   
+// *       *       *       *       *       *       *     
+
 int main()
 {
   int col = 27;

@@ -8,6 +8,11 @@ int main()
   // cin >> num;
 
   // Inverted Half Pyramid
+  // *****
+  // ****
+  // ***
+  // **
+  // *
   for (int i = 0; i < num; i++)
   {
     for (int j = num - i; j > 0; j--)
@@ -18,6 +23,11 @@ int main()
   }
 
   // Half Pyramid after 180 degree rotation
+  //     *
+  //    **
+  //   ***
+  //  ****
+  // *****
   for (int i = 1; i <= num; i++)
   {
     for (int j = 1; j <= num; j++)
@@ -35,6 +45,11 @@ int main()
   }
 
   // Half pyramid using numbers
+  // 1
+  // 22
+  // 333
+  // 4444
+  // 55555
   for (int i = 1; i <= num; i++)
   {
     for (int j = 1; j <= i; j++)

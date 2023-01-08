@@ -1,6 +1,12 @@
 #include <iostream>
 using namespace std;
 
+// 1 
+// 0 1 
+// 1 0 1 
+// 0 1 0 1 
+// 1 0 1 0 1 
+
 int main()
 {
   int num = 5;
