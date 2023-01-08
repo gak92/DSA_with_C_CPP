@@ -23,13 +23,9 @@ bool is_pythagorian_triplet(int x, int y, int z)
   }
 
   if (a * a == b * b + c * c)
-  {
     return true;
-  }
   else
-  {
     return false;
-  }
 }
 
 int main()
@@ -39,13 +35,9 @@ int main()
   cin >> x >> y >> z;
 
   if (is_pythagorian_triplet(x, y, z))
-  {
     cout << "Pythagorian triplet";
-  }
   else
-  {
     cout << "Not a Pythagorian triplet";
-  }
 
   return 0;
 }
