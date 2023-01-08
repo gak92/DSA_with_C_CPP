@@ -10,9 +10,9 @@ int cube(int num)
 int main()
 {
   int num = 153;
+  int original = num;
   int armstrong = 0;
 
-  cout << "Given number is: " << num << endl;
   while (num > 0)
   {
     int lastDigit = num % 10;
@@ -20,7 +20,15 @@ int main()
     num = num / 10;
   }
 
-  cout << "Armstrong number is: " << armstrong;
+  cout << "Given number is: " << original << endl;
+
+  if(original == armstrong)
+  {
+    cout << "Armstrong number is: " << armstrong << endl;
+    cout << original << " is armstrong number" << endl;
+  }
+  else
+    cout << original << " is not armstrong number" << endl;
 
   return 0;
 }
