@@ -4,6 +4,24 @@ using namespace std;
 
 /*
 Sum of all SubArrays
+
+Enter the size of the array: 5
+Enter the element of the array: 1 2 0 7 2
+Sum of SubArray: 1
+Sum of SubArray: 3
+Sum of SubArray: 3
+Sum of SubArray: 10
+Sum of SubArray: 12
+Sum of SubArray: 2
+Sum of SubArray: 2
+Sum of SubArray: 9
+Sum of SubArray: 11
+Sum of SubArray: 0
+Sum of SubArray: 7
+Sum of SubArray: 9
+Sum of SubArray: 7
+Sum of SubArray: 9
+Sum of SubArray: 2
 */
 
 int main()
