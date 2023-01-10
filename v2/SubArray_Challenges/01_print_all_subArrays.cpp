@@ -5,6 +5,19 @@ using namespace std;
 /*
 Print all SubArrays
 
+Enter the size of the array: 4
+Enter the element of the array: -1 4 7 2
+-1 
+-1 4 
+-1 4 7 
+-1 4 7 2 
+4 
+4 7 
+4 7 2 
+7 
+7 2 
+2 
+
 */
 
 int main()
