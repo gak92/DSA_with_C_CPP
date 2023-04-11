@@ -3,11 +3,11 @@ using namespace std;
 
 /*
 Enter n: 5
-1
-2 1
-3 2 1
-4 3 2 1
-5 4 3 2 1
+A A A A A
+B B B B B
+C C C C C
+D D D D D
+E E E E E
 */
 
 int main()
@@ -20,9 +20,10 @@ int main()
   while (row <= n)
   {
     col = 1;
-    while (col <= row)
+    while (col <= n)
     {
-      cout << row - col + 1 << " ";
+      char ch = 'A' + row - 1;
+      cout << ch << " ";
       col = col + 1;
     }
 
