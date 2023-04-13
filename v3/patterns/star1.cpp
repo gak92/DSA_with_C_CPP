@@ -3,31 +3,35 @@ using namespace std;
 
 /*
 Enter n: 5
-E
-D E
-C D E
-B C D E
-A B C D E
+    *
+   **
+  ***
+ ****
+*****
 */
 
 int main()
 {
-  int row, col, n;
+  int row, col, n, space;
   cout << "Enter n: ";
   cin >> n;
 
   row = 1;
   while (row <= n)
   {
-    col = 1;
-    char ch = 'A' + n - row;
-    while (col <= row)
+    space = n - row;
+    while (space)
     {
-      cout << ch << " ";
-      col = col + 1;
-      ch = ch + 1;
+      cout << " ";
+      space = space - 1;
     }
 
+    col = 1;
+    while (col <= row)
+    {
+      cout << "*";
+      col = col + 1;
+    }
     cout << endl;
     row = row + 1;
   }
