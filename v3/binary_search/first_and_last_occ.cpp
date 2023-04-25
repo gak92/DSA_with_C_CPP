@@ -63,8 +63,15 @@ int main()
   vector<int> arr = {1, 2, 2, 3, 3, 3, 3, 5, 5, 7};
 
   int key = 5;
-  cout << "First Occurence of " << key << " is at Index: " << first_occurrence(arr, key) << endl;
-  cout << "Last Occurence of " << key << " is at Index: " << last_occurrence(arr, key) << endl;
+  int first_occ = first_occurrence(arr, key);
+  int last_occ = last_occurrence(arr, key);
+
+  cout << "First Occurence of " << key << " is at Index: " << first_occ << endl;
+  cout << "Last Occurence of " << key << " is at Index: " << last_occ << endl;
+
+  // To find total number of occurrences
+  // last occ index - first occ index + 1
+  cout << "Total number of occurrences: " << last_occ - first_occ + 1 << endl;
 
   return 0;
 }
