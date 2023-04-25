@@ -10,7 +10,7 @@ int getPivotIndex(vector<int> arr)
 
   while (start < end)
   {
-    if (arr[mid] > arr[0])
+    if (arr[mid] >= arr[0])
     {
       start = mid + 1;
     }
