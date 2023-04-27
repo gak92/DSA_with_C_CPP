@@ -23,7 +23,7 @@ Explanation: The square root of 8 is 2.82842..., and since we round it down to t
 #include <bits/stdc++.h>
 using namespace std;
 
-long long int findSqrt(int n)
+long long int findIntegerSqrt(int n)
 {
   int start = 0;
   int end = n;
@@ -52,11 +52,32 @@ long long int findSqrt(int n)
   return res;
 }
 
+double morePrecise(int n, int precision, int tempSol)
+{
+  double factor = 1;
+  double res = tempSol;
+
+  for (int i = 0; i < precision; i++)
+  {
+    factor = factor / 10;
+    for (double j = res; j * j < n; j = j + factor)
+    {
+      res = j;
+    }
+  }
+  return res;
+}
+
 int main()
 {
-  int n = 1000000;
+  cout << "Enter number: ";
+  int n;
+  cin >> n;
 
-  cout << "Square root of " << n << " is: " << findSqrt(n) << endl;
+  int tempSol = findIntegerSqrt(n);
+  double finalSol = morePrecise(n, 3, tempSol);
+
+  cout << "Square root of " << n << " is: " << finalSol << endl;
 
   return 0;
 }
