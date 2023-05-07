@@ -42,7 +42,7 @@ bool checkInclusion(string s1, string s2)
   {
     int index = s1[i] - 'a';
     count1[index]++;
-    cout << i << endl;
+    // cout << i << endl;
   }
 
   int count2[26] = {0};
@@ -54,6 +54,7 @@ bool checkInclusion(string s1, string s2)
   {
     int index = s2[i] - 'a';
     count2[index]++;
+    i++;
   }
   if (checkEqual(count1, count2))
   {
@@ -71,7 +72,7 @@ bool checkInclusion(string s1, string s2)
     count2[index]--;
 
     i++;
-    cout << i << endl;
+    // cout << i << endl;
     if (checkEqual(count1, count2))
     {
       return true;
@@ -84,10 +85,14 @@ bool checkInclusion(string s1, string s2)
 int main()
 {
 
-  string s1 = "ab";
-  string s2 = "eidbaooo";
+  // string s1 = "ab";
+  // string s2 = "eidbaooo";
 
-  cout << "Answer: " << endl;
+  string s1 = "ab";
+  string s2 = "eidboaoo";
+
+  cout
+      << "Answer: " << endl;
   if (checkInclusion(s1, s2))
   {
     cout << "S1 is the permutation of S2" << endl;
