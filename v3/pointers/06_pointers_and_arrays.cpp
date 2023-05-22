@@ -33,7 +33,7 @@ int main()
 
   // address of array and address of pointer variable
   int a[5] = {21, 22, 23, 24, 25};
-  cout << "\n Address of a: " << a << endl;
+  cout << "\nAddress of a: " << a << endl;
   cout << "Address of a: " << &a << endl;
   cout << "Address of a: " << &a[0] << endl;
 
@@ -41,6 +41,17 @@ int main()
   cout << "Value at pointer variable p: " << p << endl;
   cout << "Address of pointer variable p: " << &p << endl;
   cout << "Value point by address at pointer variable p: " << *p << endl;
+
+  // 3rd difference: Symbol table cannot change
+  int brr[5] = {19, 21, 27, 41, 92};
+
+  // Error
+  // brr = brr + 1;
+
+  int *q = brr;
+  cout << "\n--------> " << q << endl;
+  q = q + 1;
+  cout << "--------> " << q << endl;
 
   return 0;
 }
