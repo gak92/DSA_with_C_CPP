@@ -1,4 +1,5 @@
 #include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 /*
@@ -14,11 +15,13 @@ private:
 
 public:
   char level;
+  char *name;
 
   // default constructor
   Hero()
   {
     cout << "constructor called" << endl;
+    name = new char[100];
   }
 
   // parametrized constructor
@@ -44,7 +47,7 @@ public:
 
   void print()
   {
-    cout << "level: " << this->level << endl;
+    cout << "level: " << this->level << ", ";
     cout << "health: " << this->health << endl;
   }
 
@@ -56,6 +59,11 @@ public:
   int getHealth()
   {
     return health;
+  }
+
+  void setName(char name[])
+  {
+    strcpy(this->name, name);
   }
 };
 
