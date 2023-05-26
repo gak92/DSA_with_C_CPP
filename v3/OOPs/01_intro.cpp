@@ -27,12 +27,21 @@ public:
 
 int main()
 {
+  // static allocation
   Hero john;
   john.setHealth(90);
   john.level = 'A';
 
   cout << "Johne health: " << john.getHealth() << endl;
   cout << "Johne level: " << john.level << endl;
+
+  // dynamically
+  Hero *mike = new Hero;
+  mike->setHealth(70);
+  mike->level = 'B';
+
+  cout << "Mike health: " << mike->getHealth() << endl;
+  cout << "Mike level: " << mike->level << endl;
 
   return 0;
 }
