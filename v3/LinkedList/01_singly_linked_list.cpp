@@ -42,6 +42,22 @@ void insertAtTail(Node *&tail, int data)
   tail = tail->next;
 }
 
+void insertAtPosition(Node *&head, int position, int data)
+{
+  Node *temp = head;
+  int count = 1;
+
+  while (count < position - 1)
+  {
+    temp = temp->next;
+    count++;
+  }
+
+  Node *nodeToInsert = new Node(data);
+  nodeToInsert->next = temp->next;
+  temp->next = nodeToInsert;
+}
+
 int main()
 {
   Node *node1 = new Node(5);
@@ -65,6 +81,10 @@ int main()
   printLL(head);
 
   insertAtTail(tail, 19);
+  cout << "Linked list is: ";
+  printLL(head);
+
+  insertAtPosition(head, 4, 11);
   cout << "Linked list is: ";
   printLL(head);
 
