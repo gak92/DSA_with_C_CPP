@@ -13,6 +13,19 @@ public:
     this->data = data;
     this->next = NULL;
   }
+
+  // destructor
+  ~Node()
+  {
+    int value = this->data;
+    // free memory
+    if (this->next != NULL)
+    {
+      delete next;
+      this->next = NULL;
+    }
+    cout << " memory is free for node with data " << value << endl;
+  }
 };
 
 void printLL(Node *&head)
@@ -42,8 +55,14 @@ void insertAtTail(Node *&tail, int data)
   tail = tail->next;
 }
 
-void insertAtPosition(Node *&head, int position, int data)
+void insertAtPosition(Node *&head, Node *&tail, int position, int data)
 {
+  // insert at start
+  if (position == 1)
+  {
+    insertAtHead(head, data);
+    return;
+  }
   Node *temp = head;
   int count = 1;
 
@@ -53,9 +72,46 @@ void insertAtPosition(Node *&head, int position, int data)
     count++;
   }
 
+  if (temp->next == NULL)
+  {
+    insertAtTail(tail, data);
+    return;
+  }
+
   Node *nodeToInsert = new Node(data);
   nodeToInsert->next = temp->next;
   temp->next = nodeToInsert;
+}
+
+void deleteAtPosition(Node *&head, Node *&tail, int position)
+{
+  if (position == 1)
+  {
+    // delete at start
+    Node *temp = head;
+    head = head->next;
+    temp->next = NULL;
+    delete temp;
+  }
+  else
+  {
+    // deleting middle or last node
+    Node *prev = NULL;
+    Node *curr = head;
+    int count = 1;
+
+    while (count < position)
+    {
+      prev = curr;
+      curr = curr->next;
+      count++;
+    }
+    prev->next = curr->next;
+    if (prev->next == NULL)
+      tail = prev;
+    curr->next = NULL;
+    delete curr;
+  }
 }
 
 int main()
@@ -84,9 +140,22 @@ int main()
   cout << "Linked list is: ";
   printLL(head);
 
-  insertAtPosition(head, 4, 11);
+  insertAtPosition(head, tail, 5, 11);
   cout << "Linked list is: ";
   printLL(head);
+
+  // print head and tail
+  cout << "Head: " << head->data << endl;
+  cout << "Tail: " << tail->data << endl;
+
+  // delete
+  deleteAtPosition(head, tail, 5);
+  cout << "Linked list is: ";
+  printLL(head);
+
+  // print head and tail
+  cout << "Head: " << head->data << endl;
+  cout << "Tail: " << tail->data << endl;
 
   return 0;
 }
