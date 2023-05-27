@@ -42,48 +42,104 @@ int getLength(Node *&head)
   return length;
 }
 
-void insertAtHead(Node *&head, int data)
+void insertAtHead(Node *&head, Node *&tail, int data)
 {
-  Node *newNode = new Node(data);
-  newNode->next = head;
-  head->prev = newNode;
-  head = newNode;
+  if (head == NULL)
+  {
+    Node *newNode = new Node(data);
+    head = newNode;
+    tail = newNode;
+  }
+  else
+  {
+    Node *newNode = new Node(data);
+    newNode->next = head;
+    head->prev = newNode;
+    head = newNode;
+  }
 }
 
-void insertAtTail(Node *&tail, int data)
+void insertAtTail(Node *&head, Node *&tail, int data)
 {
+  if (head == NULL)
+  {
+    Node *newNode = new Node(data);
+    head = newNode;
+    tail = newNode;
+  }
+  else
+  {
+    Node *newNode = new Node(data);
+    newNode->prev = tail;
+    tail->next = newNode;
+    tail = newNode;
+  }
+}
+
+void insertAtPosition(Node *&head, Node *&tail, int position, int data)
+{
+  // insert at 1st position (insert at start)
+  if (position == 1)
+  {
+    insertAtHead(head, tail, data);
+    return;
+  }
+
+  // insert at last position (insert at tail)
+  Node *temp = head;
+  int count = 1;
+  while (count < position - 1)
+  {
+    temp = temp->next;
+    count++;
+  }
+
+  if (temp->next == NULL)
+  {
+    insertAtTail(head, tail, data);
+    return;
+  }
+
+  // insert at any middle position
   Node *newNode = new Node(data);
-  newNode->prev = tail;
-  tail->next = newNode;
-  tail = newNode;
+  newNode->next = temp->next;
+  temp->next->prev = newNode;
+  newNode->prev = temp;
+  temp->next = newNode;
 }
 
 int main()
 {
-  Node *node1 = new Node(11);
-  Node *head = node1;
-  Node *tail = node1;
+  // Node *node1 = new Node(11);
+  Node *head = NULL;
+  Node *tail = NULL;
 
   printDLL(head);
   cout << "Length of doubly linked list: " << getLength(head) << endl;
 
   // insert at head
-  insertAtHead(head, 7);
+  insertAtHead(head, tail, 7);
   printDLL(head);
-  insertAtHead(head, 4);
+  insertAtHead(head, tail, 4);
   printDLL(head);
-  insertAtHead(head, 3);
+  insertAtHead(head, tail, 3);
   printDLL(head);
 
   // insert at tail
-  insertAtTail(tail, 19);
+  insertAtTail(head, tail, 19);
   printDLL(head);
   cout << "Head: " << head->data << endl;
   cout << "Tail: " << tail->data << endl;
-  insertAtTail(tail, 27);
+  insertAtTail(head, tail, 27);
   printDLL(head);
   cout << "Head: " << head->data << endl;
   cout << "Tail: " << tail->data << endl;
+
+  // insert at position
+  insertAtPosition(head, tail, 4, 41);
+  insertAtPosition(head, tail, 1, 2);
+  insertAtPosition(head, tail, 8, 92);
+  printDLL(head);
 
   return 0;
 }
