@@ -35,6 +35,13 @@ void insertAtHead(Node *&head, int data)
   head = temp;
 }
 
+void insertAtTail(Node *&tail, int data)
+{
+  Node *temp = new Node(data);
+  tail->next = temp;
+  tail = tail->next;
+}
+
 int main()
 {
   Node *node1 = new Node(5);
@@ -44,6 +51,7 @@ int main()
   cout << "Next node address: " << node1->next << endl;
 
   Node *head = node1;
+  Node *tail = node1;
 
   cout << "Linked list is: ";
   printLL(head);
@@ -53,6 +61,10 @@ int main()
   printLL(head);
 
   insertAtHead(head, 7);
+  cout << "Linked list is: ";
+  printLL(head);
+
+  insertAtTail(tail, 19);
   cout << "Linked list is: ";
   printLL(head);
 
