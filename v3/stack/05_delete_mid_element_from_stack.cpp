@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std;
 
 void solve(stack<int> &inputStack, int count, int size)
 {
@@ -28,6 +29,12 @@ void deleteMiddle(stack<int> &inputStack, int N)
 
 int main()
 {
+  stack<int> st;
+
+  st.push(7);
+  st.push(11);
+  st.push(19);
+  st.push(27);
 
   return 0;
 }
