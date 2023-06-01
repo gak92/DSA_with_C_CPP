@@ -34,22 +34,20 @@ public:
       cout << "Stack Underflow" << endl;
   }
 
-  int peek()
-  {
-    if (top >= 0)
-      return arr[top];
-    else
-    {
-      cout << "Stack s Empty" << endl;
-      return -1;
-    }
-  }
-
   bool isEmpty()
   {
     if (top >= 0)
       return false;
     return true;
+  }
+
+  int peek()
+  {
+    if (top >= 0)
+    {
+      return arr[top];
+    }
+    return -1;
   }
 };
 
