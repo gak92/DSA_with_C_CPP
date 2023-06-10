@@ -1,3 +1,7 @@
+/*
+  https://practice.geeksforgeeks.org/problems/diameter-of-binary-tree/1
+*/
+
 //{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
@@ -114,21 +118,48 @@ private:
     return res;
   }
 
+  // soluton # 2 - otmzed
+  pair<int, int> dmFast(Node *root)
+  {
+    if (root == NULL)
+    {
+      pair<int, int> p = make_pair(0, 0);
+      return p;
+    }
+
+    pair<int, int> left = dmFast(root->left);
+    pair<int, int> right = dmFast(root->right);
+
+    int op1 = left.first;
+    int op2 = right.first;
+    int op3 = left.second + right.second + 1;
+
+    pair<int, int> res;
+    res.first = max(op1, max(op2, op3));
+    res.second = max(left.second, right.second) + 1;
+
+    return res;
+  }
+
 public:
   // Function to return the diameter of a Binary Tree.
   int diameter(Node *root)
   {
     // Your code here
-    if (root == NULL)
-      return 0;
+    // sol # 1 - O(n2)
+    // if (root == NULL)
+    //   return 0;
 
-    int op1 = diameter(root->left);
-    int op2 = diameter(root->right);
-    int op3 = height(root->left) + height(root->right) + 1;
+    // int op1 = diameter(root->left);
+    // int op2 = diameter(root->right);
+    // int op3 = height(root->left) + height(root->right) + 1;
 
-    int res = max(op1, max(op2, op3));
+    // int res = max(op1, max(op2, op3));
 
-    return res;
+    // return res;
+
+    // sol # 2 - optimized
+    return dmFast(root).first;
   }
 };
 
