@@ -77,6 +77,72 @@ void inorderTraversal(node *root)
   inorderTraversal(root->right);
 }
 
+void inOrderiterative(node *root)
+{
+  stack<node *> st;
+  node *curr = root;
+
+  while (curr != NULL || !st.empty())
+  {
+    while (curr != NULL)
+    {
+      st.push(curr);
+      curr = curr->left;
+    }
+
+    node *temp = st.top();
+    st.pop();
+    cout << temp->data << " ";
+    curr = temp->right;
+  }
+}
+
+void preOrderiterative(node *root)
+{
+  stack<node *> st;
+  st.push(root);
+
+  while (!st.empty())
+  {
+    node *temp = st.top();
+    st.pop();
+
+    cout << temp->data << " ";
+    if (temp->right)
+      st.push(temp->right);
+
+    if (temp->left)
+      st.push(temp->left);
+  }
+}
+
+void postOrderiterative(node *root)
+{
+  stack<node *> st1, st2;
+  st1.push(root);
+  node *temp = NULL;
+
+  while (!st1.empty())
+  {
+    temp = st1.top();
+    st1.pop();
+    st2.push(temp);
+
+    if (temp->left)
+      st1.push(temp->left);
+
+    if (temp->right)
+      st1.push(temp->right);
+  }
+
+  while (!st2.empty())
+  {
+    temp = st2.top();
+    st2.pop();
+    cout << temp->data << " ";
+  }
+}
+
 void preorderTraversal(node *root)
 {
   if (root == NULL)
@@ -116,11 +182,20 @@ int main()
   cout << "\ninorder Traversal: ";
   inorderTraversal(root);
 
-  cout << "\npreorder Traversal: ";
+  cout << "\ninOrder iterative: ";
+  inOrderiterative(root);
+
+  cout << "\n\npreorder Traversal: ";
   preorderTraversal(root);
 
-  cout << "\npostorder Traversal: ";
+  cout << "\npreOrder iterative: ";
+  preOrderiterative(root);
+
+  cout << "\n\npostorder Traversal: ";
   postorderTraversal(root);
+
+  cout << "\npostOrder iterative: ";
+  postOrderiterative(root);
 
   return 0;
 }
