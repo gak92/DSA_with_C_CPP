@@ -79,6 +79,66 @@ void postOrderTraversal(Node *root)
   cout << root->data << " ";
 }
 
+Node *inOrderSuccessor(Node *root, int val)
+{
+  Node *successor = NULL;
+  Node *curr = root;
+
+  while (curr != NULL)
+  {
+    if (val >= curr->data)
+    {
+      curr = curr->right;
+    }
+    else
+    {
+      successor = curr;
+      curr = curr->left;
+    }
+  }
+  return successor;
+}
+
+Node *inOrderPredecessor(Node *root, int val)
+{
+  Node *predecessor = NULL;
+  Node *curr = root;
+
+  while (curr != NULL)
+  {
+    if (val <= curr->data)
+    {
+      curr = curr->left;
+    }
+    else
+    {
+      predecessor = curr;
+      curr = curr->right;
+    }
+  }
+  return predecessor;
+}
+
+Node *minValue(Node *root)
+{
+  Node *temp = root;
+  while (temp->left != NULL)
+  {
+    temp = temp->left;
+  }
+  return temp;
+}
+
+Node *maxValue(Node *root)
+{
+  Node *temp = root;
+  while (temp->right != NULL)
+  {
+    temp = temp->right;
+  }
+  return temp;
+}
+
 Node *insertToBST(Node *root, int data)
 {
   if (root == NULL)
@@ -112,6 +172,7 @@ int main()
   Node *root = NULL;
 
   cout << "Take input to create BST" << endl;
+  // 50 20 70 10 30 90 110 -1
   takeinput(root);
 
   cout << "Prnt BST:" << endl;
@@ -126,5 +187,10 @@ int main()
   cout << "\npostOrder: ";
   postOrderTraversal(root);
 
+  cout << "\nMin Value: " << minValue(root)->data << endl;
+  cout << "\nMax Value: " << maxValue(root)->data << endl;
+
+  cout << "\nSuccessor: " << inOrderSuccessor(root, 30)->data << endl;
+  cout << "\nPredecessor: " << inOrderPredecessor(root, 30)->data << endl;
   return 0;
 }
