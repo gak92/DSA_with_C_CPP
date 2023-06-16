@@ -139,6 +139,60 @@ Node *maxValue(Node *root)
   return temp;
 }
 
+Node *deleteFromBST(Node *root, int val)
+{
+  if (root == NULL)
+    return root;
+
+  if (root->data == val)
+  {
+    // 0 child
+    if (root->left == NULL && root->right == NULL)
+    {
+      delete root;
+      return NULL;
+    }
+
+    // 1 child
+    // left child
+    if (root->left != NULL && root->right == NULL)
+    {
+      Node *temp = root->left;
+      delete root;
+      return temp;
+    }
+
+    // right child
+    if (root->left == NULL && root->right != NULL)
+    {
+      Node *temp = root->right;
+      delete root;
+      return temp;
+    }
+
+    // 2 child
+    if (root->left != NULL && root->right != NULL)
+    {
+      int min = minValue(root->right)->data;
+      root->data = min;
+      root->right = deleteFromBST(root->right, min);
+      return root;
+    }
+  }
+
+  else if (root->data > val)
+  {
+    root->left = deleteFromBST(root->left, val);
+    return root;
+  }
+
+  else
+  {
+    root->right = deleteFromBST(root->right, val);
+    return root;
+  }
+}
+
 Node *insertToBST(Node *root, int data)
 {
   if (root == NULL)
@@ -192,5 +246,12 @@ int main()
 
   cout << "\nSuccessor: " << inOrderSuccessor(root, 30)->data << endl;
   cout << "\nPredecessor: " << inOrderPredecessor(root, 30)->data << endl;
+
+  // Deletion
+  root = deleteFromBST(root, 50);
+
+  cout << "Prnt BST:" << endl;
+  levelOrderTraversal(root);
+
   return 0;
 }
