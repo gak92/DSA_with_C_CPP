@@ -89,6 +89,29 @@ public:
   {
     return searchUtil(root, word);
   }
+
+  void removeUtil(TrieNode *root, string word)
+  {
+    if (word.length() == 0)
+    {
+      root->isTerminal = false;
+      return;
+    }
+
+    int index = word[0] - 'A';
+    TrieNode *child;
+
+    if (root->children[index] != NULL)
+    {
+      child = root->children[index];
+    }
+    removeUtil(child, word.substr(1));
+  }
+
+  void removeWord(string word)
+  {
+    removeUtil(root, word);
+  }
 };
 
 int main()
@@ -101,6 +124,13 @@ int main()
 
   cout << "TIME (present or absent): " << t->searchWord("TIME") << endl;
   cout << "TIM (present or absent): " << t->searchWord("TIM") << endl;
+
+  t->removeWord("TIME");
+  cout << "TIME (present or absent): " << t->searchWord("TIME") << endl;
+  cout << "ARM (present or absent): " << t->searchWord("ARM") << endl;
+
+  t->removeWord("ARM");
+  cout << "ARM (present or absent): " << t->searchWord("ARM") << endl;
 
   return 0;
 }
