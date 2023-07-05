@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+using namespace std;
 
 vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)
 {
@@ -52,4 +53,10 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)
   }
 
   return res;
+}
+
+int main()
+{
+
+  return 0;
 }
