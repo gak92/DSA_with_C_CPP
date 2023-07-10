@@ -31,6 +31,23 @@ public:
     return dp[n];
   }
 
+  int solve3(vector<int> &cost, int n)
+  {
+    // step # 1 - create DP
+    vector<int> dp(n + 1);
+    // step # 2 - Initialize
+    dp[0] = cost[0];
+    dp[1] = cost[1];
+
+    // step # 3 - calculate for the rest
+    for (int i = 2; i < n; i++)
+    {
+      dp[i] = cost[i] + min(dp[i - 1], dp[i - 2]);
+    }
+
+    return min(dp[n - 1], dp[n - 2]);
+  }
+
   int minCostClimbingStairs(vector<int> &cost)
   {
 
@@ -39,12 +56,17 @@ public:
     // int res = min(solve(cost, n-1), solve(cost, n-2) );
     // return res;
 
-    // solution # 2 (with DP)
-    int n = cost.size();
-    // step 1 - create DP array
-    vector<int> dp(n + 1, -1);
+    // solution # 2 (with DP) - Memoization - Top Down Approach
+    //     int n = cost.size();
+    //     // step 1 - create DP array
+    //     vector<int> dp(n+1, -1);
 
-    int res = min(solve2(cost, n - 1, dp), solve2(cost, n - 2, dp));
+    //     int res = min(solve2(cost, n-1, dp), solve2(cost, n-2, dp));
+    //     return res;
+
+    // solution # 3 - Tabulation - Bottom Up Approach
+    int n = cost.size();
+    int res = solve3(cost, n);
     return res;
   }
 };
