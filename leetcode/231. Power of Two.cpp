@@ -1,5 +1,6 @@
 /*
 231. Power of Two
+https://leetcode.com/problems/power-of-two/description/
 
 Given an integer n, return true if it is a power of two. Otherwise, return false.
 
@@ -82,3 +83,19 @@ bool isPowerOf2_2(int n)
   }
   return false;
 }
+
+// Solution # 02
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        
+        if(n > 0)
+        {
+            if( (n & (n - 1)) == 0)
+                return true;
+        }
+
+        return false;
+    }
+};
+
